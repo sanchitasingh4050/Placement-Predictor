@@ -5,7 +5,8 @@ import numpy as np
 app = Flask(__name__)
 
 # Load the model
-model = pickle.load(open('Placement_prediction/model.pkl', 'rb'))
+model = pickle.load(open('new_model.pickle', 'rb'))
+scaler = pickle.load(open('new_scaler.pickle', 'rb'))
 
 @app.route('/')
 def home():
@@ -16,9 +17,14 @@ def predict():
     try:
         cgpa = float(request.form['cgpa'])
         iq = float(request.form['iq'])
-        
-        features = np.array([[cgpa, iq]])
+        print("cgpa ---> ",cgpa)
+        print("iq ---> ",iq)
+
+
+        features = np.array(scaler.transform([[cgpa, iq]]))
         prediction = model.predict(features)[0]
+
+        print('Prediction --->',prediction)
         
         result = 'Placed' if prediction == 1 else 'Not Placed'
         return jsonify({'result': result})
