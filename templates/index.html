@@ -3,25 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Placement Prediction</title>
+    <title>Video Background</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(120deg, #2980b9, #6dd5fa);
-            color: #fff;
+            color: hwb(214 89% 9%);
             text-align: center;
             margin: 0;
             padding: 0;
+            overflow: hidden;
+            position: relative;
         }
-        h1 {
-            margin-top: 50px;
-            font-size: 2.5rem;
+        .video-background {
+            position: fixed; /* Use fixed to ensure it stays in place */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensure the video covers the entire area */
+            z-index: -1; /* Send to the back */
+        }
+        h1, form, #result {
+            position: relative;
+            z-index: 1; /* Ensure content is above the video */
         }
         form {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.8);
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px rgba(38, 202, 5, 0.1);
             display: inline-block;
             margin-top: 20px;
             width: 300px;
@@ -31,9 +41,9 @@
             margin-bottom: 10px;
             font-size: 1.2rem;
             text-align: left;
-            color: #fff;
+            color: #17202a;
         }
-        input[type="text"] {
+        input[type="number"] {
             width: 100%;
             padding: 10px;
             margin-bottom: 20px;
@@ -57,17 +67,21 @@
         #result {
             margin-top: 20px;
             font-size: 1.5rem;
-            color: #fff;
+            color: hwb(115 2% 29%);
         }
     </style>
 </head>
 <body>
-    <h1>Placement Prediction</h1>
+    <video class="video-background" autoplay muted loop>
+        <source src="{{ url_for('static', filename='bggg.mp4') }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <h1>Placement Predictior</h1>
     <form id="predictionForm" action="/predict" method="post">
         <label for="cgpa">CGPA:</label>
-        <input type="text" id="cgpa" name="cgpa" required>
+        <input type="number" id="cgpa" name="cgpa" min="0" max="10" step="0.01" required>
         <label for="iq">IQ:</label>
-        <input type="text" id="iq" name="iq" required>
+        <input type="number" id="iq" name="iq" min="0" max="300" step="1" required>
         <input type="submit" value="Predict">
     </form>
     <div id="result"></div>

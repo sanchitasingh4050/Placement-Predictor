@@ -26,11 +26,11 @@ def predict():
 
         print('Prediction --->',prediction)
         
-        result = 'Placed' if prediction == 1 else 'Not Placed'
+        result = 'Congratulations, You will be Placed!' if prediction == 1 else 'According to this model, you would not get Placed, Prove it Wrong!'
         return jsonify({'result': result})
     except Exception as e:
         print(f"Error: {e}")
         return jsonify({'error': 'Invalid input'}), 400
 
 #if __name__ == '__main__':
-#   app.run(debug=True)
+  #app.run(debug=True)
