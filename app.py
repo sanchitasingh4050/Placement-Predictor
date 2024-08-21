@@ -32,5 +32,5 @@ def predict():
         print(f"Error: {e}")
         return jsonify({'error': 'Invalid input'}), 400
 
-if __name__ == '__main__':
-    app.run(debug=True)
+#if __name__ == '__main__':
+#   app.run(debug=True)
