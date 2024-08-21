@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Background</title>
+    <title>Placement Predictor</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -76,7 +76,7 @@
         <source src="{{ url_for('static', filename='bggg.mp4') }}" type="video/mp4">
         Your browser does not support the video tag.
     </video>
-    <h1>Placement Predictior</h1>
+    <h1>Placement Predictor</h1>
     <form id="predictionForm" action="/predict" method="post">
         <label for="cgpa">CGPA:</label>
         <input type="number" id="cgpa" name="cgpa" min="0" max="10" step="0.01" required>
