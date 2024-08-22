@@ -16,6 +16,7 @@ By inputting these values into the predictor, users can receive a prediction of 
 You can try the Placement Predictor by visiting the following link:
 
 [Placement Predictor - Live Demo](https://placement-predictor-4.onrender.com/)
+It may take some time to launch ( not more than 50 sec, please wait )
 
 ## Features
 
